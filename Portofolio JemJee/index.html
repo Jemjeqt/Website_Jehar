@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>JemJeeqt | Portfolio</title>
+    <style>
+      :root {
+        --bg-color: #000000;
+        --content-bg: #0a0a0a;
+        --text-color: #f0f0f0;
+        --accent-color: #481380;
+        --secondary-bg: #1a1a1a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        background-color: var(--content-bg);
+      }
+
+      header {
+        padding: 20px 0;
+        background-color: var(--content-bg);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        gap: 2rem;
+      }
+
+      nav ul li a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--accent-color);
+      }
+
+      .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background-color: var(--content-bg);
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 1.2rem;
+        color: var(--text-color);
+        margin-bottom: 1rem;
+      }
+
+      .hero-text h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .accent {
+        color: var(--accent-color);
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        max-width: 500px;
+        opacity: 0.8;
+      }
+
+      .hero-image {
+        position: relative;
+      }
+
+      .circle-frame {
+        width: 300px;
+        height: 300px;
+        border: 2px dashed var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+
+      .about {
+        padding: 80px 0;
+        background-color: var(--content-bg);
+      }
+
+      .article-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--text-color);
+      }
+
+      .about-text {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+        color: var(--text-color);
+        opacity: 0.8;
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+
+      .service {
+        padding: 60px 0;
+        background-color: var(--secondary-bg);
+        margin-top: 40px;
+      }
+
+      .service-title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--text-color);
+      }
+
+      .service-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        list-style: none;
+      }
+
+      .service-item {
+        background-color: var(--content-bg);
+        border-radius: 15px;
+        padding: 30px;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .service-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .service-icon-box {
+        background-color: var(--accent-color);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .service-icon-box img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .service-content-box {
+        flex: 1;
+      }
+
+      .service-item-title {
+        font-size: 1.2rem;
+        color: var(--text-color);
+        margin-bottom: 15px;
+      }
+
+      .service-item-text {
+        color: var(--text-color);
+        opacity: 0.8;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .cv-download-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .cv-download-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--accent-color);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        border: 2px solid var(--accent-color);
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cv-download-btn:hover {
+        background-color: white;
+        color: var(--accent-color);
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+      }
+
+      .projects {
+        padding: 80px 0;
+        background-color: var(--content-bg);
+      }
+
+      .projects h2 {
+        margin-bottom: 40px;
+        font-size: 2.5rem;
+        text-align: center;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background-color: var(--secondary-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .project-info {
+        padding: 20px;
+      }
+
+      .project-info h3 {
+        margin-bottom: 10px;
+        color: var(--accent-color);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        padding: 10px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: opacity 0.3s ease;
+      }
+
+      .btn:hover {
+        opacity: 0.9;
+      }
+
+      .contact {
+        padding: 80px 0;
+        background-color: var(--content-bg);
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 50px;
+        margin-top: 40px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-info-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .icon-box {
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--bg-color);
+        font-size: 1.2rem;
+      }
+
+      .info-content h4 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        color: var(--text-color);
+      }
+
+      .info-content p {
+        color: var(--text-color);
+        opacity: 0.8;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form-group {
+        position: relative;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background-color: var(--secondary-bg);
+        color: var(--text-color);
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+        align-self: flex-start;
+      }
+
+      .submit-btn:hover {
+        opacity: 0.9;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 0;
+        background-color: var(--secondary-bg);
+      }
+
+      footer h2 {
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .social-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--accent-color);
+      }
+
+      @media (max-width: 768px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          order: 2;
+        }
+
+        .contact-form {
+          order: 1;
+        }
+      }
+    </style>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">JemJeeqt.</div>
+          <ul>
+            <li>
+              <a href="#home" class="nav-link active" data-section="home"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="#about" class="nav-link" data-section="about"
+                >About Me</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="nav-link" data-section="projects"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="nav-link" data-section="contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1>Web Development</h1>
+              <h2>
+                Hello I'm<br /><span class="accent">Azhar Khairu Hafidz</span>
+              </h2>
+              <p>
+                I am a student from Telkom University. I am a student majoring
+                in smart city information systems, faculty of applied
+                engineering. I really like technology and am very interested in
+                Web Development.
+              </p>
+            </div>
+            <div class="hero-image">
+              <div class="circle-frame">
+                <img
+                  src="/images/self.jpg"
+                  alt="Profile picture placeholder"
+                  style="
+                    border-radius: 50%;
+                    width: 280px;
+                    height: 280px;
+                    object-fit: cover;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- about  -->
+
+      <section id="about" class="about content-section">
+        <div class="container">
+          <header>
+            <h2 class="article-title">About me</h2>
+          </header>
+
+          <section class="about-text">
+            <p>
+              Halo semua, Perkenalkan nama aku Azhar Khairu Hafidz atau lebih
+              akrab dipanggil dengan panggilan JeJe. Aku berasal dari Medan,
+              Sumatra Utara. Sebelumnya aku adalah murid biasa disekolah MAN
+              INSAN CENDEKIA, namun setelah mengikuti keorganiasian di sekolah,
+              aku jadi tertarik berada dibidang teknologi setelah masuk di
+              divisi Kesekretariatan dan Logistik. Pengalaman ku berada dibidang
+              teknologi dimulai ketika memegang web acara besar yang diadakan
+              langsung oleh sekolah ku dulu. Sekarang minat ku dibidang
+              teknologi semakin besar, aku sekarang berada di Universitas yang
+              memiliki jurusan IT terbaik di Indonesia. Tujuan akhirku adalah
+              menjadi seorang Web Developer atau lebih tepatnya menjadi
+              Full-Stack developer.
+            </p>
+
+            <p>
+              Hello everyone, Let me introduce myself, my name is Azhar Khairu
+              Hafidz or more familiarly called JeJe. I come from Medan, North
+              Sumatra. Previously I was an ordinary student at MAN INSAN
+              CENDEKIA, but after joining an organization at school, I became
+              interested in the technology field after entering the Secretariat
+              and Logistics division. My experience in the technology field
+              began when I held a big event website held directly by my old
+              school. Now my interest in the technology field is getting bigger,
+              I am now at a university that has the best IT department in
+              Indonesia. My ultimate goal is to become a Web Developer or more
+              precisely a Full-Stack developer.
+            </p>
+
+            <p>
+              <div class="cv-download-container">
+                <a href="CV Azhar Khairu Hafidz.pdf" download class="cv-download-btn">Download CV</a>
+              </div>
+            </p>
+          </section>
+
+          <section class="service">
+            <h3 class="service-title">What i'm doing</h3>
+
+            <ul class="service-list">
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="/images/icon-design.png" alt="design icon" width="40" />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="service-item-title">Web design</h4>
+
+                  <p class="service-item-text">
+                    Work to create a website that has a good and contemporary
+                    design.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="/images/icon-dev.png"
+                    alt="Web development icon"
+                    width="40"
+                  />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="service-item-title">Web development</h4>
+
+                  <p class="service-item-text">
+                    Develop a site with the most attractive design and function
+                    possible.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="/images/icon-app.png" alt="mobile app icon" width="40" />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="service-item-title">Mobile apps</h4>
+
+                  <p class="service-item-text">
+                    Create applications that prioritize features and user
+                    convenience.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img src="/images/game.png" alt="gaming icon" width="40" />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="service-item-title">Gaming</h4>
+
+                  <p class="service-item-text">
+                    Play games according to your mood to keep your body from
+                    getting bored.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <div class="container">
+          <h2>My Projects</h2>
+          <div class="project-grid">
+            <div class="project-card">
+              <img src="/images/login page.png" alt="Project 1" />
+              <div class="project-info">
+                <h3>Landing Login Page</h3>
+                <p>Page for login purposes with a minimalist design.</p>
+                <a href="https://github.com/Jemjeqt/LoginPage_Jehar" class="btn">View Project</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <img src="/images/porto.png" alt="Project 2" />
+              <div class="project-info">
+                <h3>Portfolio Profile</h3>
+                <p>Dedicated page dedicated to a portfolio according to project needs.</p>
+                <a href="https://github.com/Jemjeqt/PortoProfile_jehar" class="btn">View Project</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <img src="/images/animelist.png" alt="Project 3" />
+              <div class="project-info">
+                <h3>Anime List</h3>
+                <p>Custom made anime page from Dea Afrizal using the JIKAN API.</p>
+                <a href="https://github.com/Jemjeqt/AnimeList_Jehar" class="btn">View Project</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <img src="/images/comic.png" alt="Project 3" />
+              <div class="project-info">
+                <h3>C O M I C</h3>
+                <p>The official website of the school's annual big event COMIC created instantly using WIX.</p>
+                <a href="https://comic2k22.wixsite.com/comic2k22" class="btn">View Project</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <img src="/images/calculator.png" alt="Project 3" />
+              <div class="project-info">
+                <h3>Simple Calculator</h3>
+                <p>Mini project from learning Javascript with a simple calculator model.</p>
+                <a href="https://github.com/Jemjeqt/Calculator_Jehar" class="btn">View Project</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <img src="/images/weather.png" alt="Project 3" />
+              <div class="project-info">
+                <h3>Weather App</h3>
+                <p>Mock application to check temperature conditions of an area using the OpenWeatherMap API.</p>
+                <a href="https://github.com/Jemjeqt/WeatherApp_Jehar" class="btn">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section id="contact" class="contact content-section">
+      <div class="container">
+        <header>
+          <h2 class="article-title">Contact Me</h2>
+        </header>
+
+        <div class="contact-content">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <div class="icon-box">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="info-content">
+                <h4>Call Me</h4>
+                <p>+62 821 8123 5171</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="icon-box">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>Email</h4>
+                <p>azharkhairu29@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="icon-box">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Location</h4>
+                <p>Bandung, West Java, Indonesia</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="contact-form">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Your Name"
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                placeholder="Your Email"
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Subject"
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                placeholder="Your Message"
+                required
+                class="form-control"
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="container">
+        <h2>JemJeeqt Web</h2>
+        <p>Create by Azhar Khairu Hafidz&copy; </p>
+        <div class="social-links">
+          <a href="https://github.com/Jemjeqt"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/azhar-khairu-hafidz/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/_zharkhrh"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:azharkhairu29@gmail.com"><i class="far fa-envelope"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all navigation links
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        // Get all content sections
+        const contentSections = document.querySelectorAll(".content-section");
+
+        // Function to update active section
+        function updateActiveSection(sectionId) {
+          // Remove active class from all sections and nav links
+          contentSections.forEach((section) =>
+            section.classList.remove("active")
+          );
+          navLinks.forEach((link) => link.classList.remove("active"));
+
+          // Add active class to current section and nav link
+          document.getElementById(sectionId).classList.add("active");
+          document
+            .querySelector(`[data-section="${sectionId}"]`)
+            .classList.add("active");
+        }
+
+        // Add click event listeners to nav links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute("data-section");
+            updateActiveSection(sectionId);
+
+            // Smooth scroll to section
+            document.getElementById(sectionId).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+
+        // Update active section on scroll
+        window.addEventListener("scroll", function () {
+          let currentSection = "";
+
+          contentSections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+              currentSection = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("data-section") === currentSection) {
+              link.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
